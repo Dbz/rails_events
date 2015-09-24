@@ -2,14 +2,14 @@ require 'rails/generators'
 require 'rails/generators/base'
 
 class InitializerGenerator < Rails::Generators::Base
-  desc "This generator creates an initializer file at config/initializers"
+  desc "This generator creates files at app/assets/javascripts/#{project_name}.js.coffee and app/assets/javascripts/views/_#{project_name}_view.js.coffee"
 
   def create_initializer_file
     create_file "config/initializers/initializer.rb", "# Add initialization content here"
   end
 
 
-  # desc "This generator creates files at app/assets/javascripts/#{project_name}.js.coffee and app/assets/javascripts/views/_#{project_name}_view.js.coffee"
+
   #
   # def create_project_file
   #   create_file "app/assets/javascripts/#{project_name}.js.coffee", "
@@ -81,8 +81,8 @@ class InitializerGenerator < Rails::Generators::Base
   private
 
   def project_name
-    "Danny"
-    # @project_name ||= Rails.application.class.parent_name
+    # "Danny"
+    @project_name ||= Rails.application.class.parent_name
   end
 
 end
