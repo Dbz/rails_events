@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    rails_events (0.0.1)
-      rails (~> 4.2.4)
+    rails_events (0.0.9)
+      rails (>= 4.0.0)
 
 GEM
   remote: https://rubygems.org/
