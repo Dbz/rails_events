@@ -1,3 +1,3 @@
 module RailsEvents
-  VERSION = "0.0.10"
+  VERSION = "0.1.1"
 end

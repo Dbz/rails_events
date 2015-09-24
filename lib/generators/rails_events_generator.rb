@@ -10,7 +10,7 @@ class RailsEventsGenerator < Rails::Generators::Base
 
   def create_project_file
     project_name = Rails.application.class.parent_name
-    create_file "app/assets/javascripts/#{project_name}.js.coffee", "
+    create_file "app/assets/javascripts/#{project_name}.js.coffee", <<-FILE
       window.#{project_name} =
         Views: {}
         Helpers: {}
@@ -23,7 +23,7 @@ class RailsEventsGenerator < Rails::Generators::Base
           view_name = $('body').data('view-render')
           return unless _.isFunction(#{project_name}.Views[view_name])
           #{project_name}.view = new #{project_name}.Views[view_name]
-    "
+    FILE
   end
 
   def create_project_view_file
