@@ -1,3 +1,6 @@
+require 'rails/generators'
+require 'rails/generators/base'
+
 class InitializerGenerator < Rails::Generators::Base
   desc "This generator creates files at app/assets/javascripts/#{project_name}.js.coffee and app/assets/javascripts/views/_#{project_name}_view.js.coffee"
 
