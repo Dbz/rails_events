@@ -24,53 +24,53 @@ FILE
 
   def create_project_view_file
     project_name = Rails.application.class.parent_name
-    create_file "app/assets/javascripts/views/_#{project_name}_view.js.coffee", "
-      class #{project_name}.View
+    create_file "app/assets/javascripts/views/_#{project_name}_view.js.coffee", <<-FILE
+class #{project_name}.View
 
-        # To bind events you need to create an events object
-        # KEY = event and selector : VALUE = method
-        # events :
-        #   {
-        #     'eventName selector' : 'method',
-        #     'eventName selector' : 'method',
-        #   }
+  # To bind events you need to create an events object
+  # KEY = event and selector : VALUE = method
+  # events :
+  #   {
+  #     'eventName selector' : 'method',
+  #     'eventName selector' : 'method',
+  #   }
 
-        constructor: (options) ->
-          options or (options = {})
-          @view_name = this.__proto__.constructor.name
-          @render(options) if @render
-          @delegateEvents()
+  constructor: (options) ->
+    options or (options = {})
+    @view_name = this.__proto__.constructor.name
+    @render(options) if @render
+    @delegateEvents()
 
-        #regex to split keys
-        delegateEventSplitter = /^(\\S+)\s*(.*)$/
+  #regex to split keys
+  delegateEventSplitter = /^(\\S+)\s*(.*)$/
 
-        delegateEvents: =>
-          # copied/modified from Backbone.View.delegateEvents
-          # http://backbonejs.org/docs/backbone.html#section-138
-          return this unless events or (events = _.result(this, 'events'))
-          for key of events
-            method = events[key]
-            method = this[events[key]]  unless _.isFunction(method)
-            continue  unless method
-            match = key.match(delegateEventSplitter)
-            eventName = match[1]
-            selector = match[2]
-            method = _.bind(method, this)
-            eventName += \".\#{@view_name}\"
-          $('body').on eventName, selector, method
-          this
+  delegateEvents: =>
+    # copied/modified from Backbone.View.delegateEvents
+    # http://backbonejs.org/docs/backbone.html#section-138
+    return this unless events or (events = _.result(this, 'events'))
+    for key of events
+      method = events[key]
+      method = this[events[key]]  unless _.isFunction(method)
+      continue  unless method
+      match = key.match(delegateEventSplitter)
+      eventName = match[1]
+      selector = match[2]
+      method = _.bind(method, this)
+      eventName += \".\#{@view_name}\"
+    $('body').on eventName, selector, method
+    this
 
-          close: =>
-              $('body').off \".\#{@view_name}\"
-          $(window).off \".\#{@view_name}\"
-          $(document).off \".\#{@view_name}\"
-          $('body').off '.#{project_name}Events'
-          $(window).off '.#{project_name}Events'
-          $(document).off '.#{project_name}Events'
+    close: =>
+        $('body').off \".\#{@view_name}\"
+    $(window).off \".\#{@view_name}\"
+    $(document).off \".\#{@view_name}\"
+    $('body').off '.#{project_name}Events'
+    $(window).off '.#{project_name}Events'
+    $(document).off '.#{project_name}Events'
 
-          #{project_name}.Ui.Close()
-          @postClose() if @postClose
-    "
+    #{project_name}.Ui.Close()
+    @postClose() if @postClose
+FILE
   end
 
 end
