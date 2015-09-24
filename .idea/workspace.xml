@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc3b0047-7561-413b-a644-04923e720305" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/generators/initializer_generator.rb" afterPath="$PROJECT_DIR$/lib/generators/rails_events_generator.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/generators/rails_events_generator.rb" afterPath="$PROJECT_DIR$/lib/generators/rails_events_generator.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/rails_events/version.rb" afterPath="$PROJECT_DIR$/lib/rails_events/version.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rails_events.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,8 +30,8 @@
           <file leaf-file-name="rails_events_generator.rb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/generators/rails_events_generator.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.077319585">
-                  <caret line="7" column="54" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
+                <state vertical-scroll-proportion="0.019329896">
+                  <caret line="4" column="66" selection-start-line="4" selection-start-column="66" selection-end-line="4" selection-end-column="66" />
                   <folding />
                 </state>
               </provider>
@@ -65,8 +64,8 @@
           <file leaf-file-name="version.rb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/rails_events/version.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.05798969">
-                  <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.019329896">
+                  <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
@@ -89,8 +88,8 @@
         <option value="$PROJECT_DIR$/lib/rails_events.rb" />
         <option value="$PROJECT_DIR$/lib/generators/rails_events/rails_events_generator.rb" />
         <option value="$PROJECT_DIR$/lib/generators/initializer_generator.rb" />
-        <option value="$PROJECT_DIR$/lib/rails_events/version.rb" />
         <option value="$PROJECT_DIR$/lib/generators/rails_events_generator.rb" />
+        <option value="$PROJECT_DIR$/lib/rails_events/version.rb" />
       </list>
     </option>
   </component>
@@ -448,18 +447,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/rails_events/version.rb">
+    <entry file="file://$PROJECT_DIR$/lib/generators/rails_events_generator.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05798969">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.019329896">
+          <caret line="4" column="66" selection-start-line="4" selection-start-column="66" selection-end-line="4" selection-end-column="66" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/generators/rails_events_generator.rb">
+    <entry file="file://$PROJECT_DIR$/lib/rails_events/version.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.077319585">
-          <caret line="7" column="54" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.019329896">
+          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
           <folding />
         </state>
       </provider>

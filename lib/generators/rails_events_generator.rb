@@ -2,7 +2,7 @@ require 'rails/generators'
 require 'rails/generators/base'
 
 class RailsEventsGenerator < Rails::Generators::Base
-  desc "This generator creates files at app/assets/javascripts/#{app_name}.js.coffee and app/assets/javascripts/views/_#{app_name}_view.js.coffee"
+  desc "This generator creates files at app/assets/javascripts/#{@app_name}.js.coffee and app/assets/javascripts/views/_#{app_name}_view.js.coffee"
 
   def create_initializer_file
     project_name = Rails.application.class.parent_name
