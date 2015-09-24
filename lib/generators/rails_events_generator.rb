@@ -10,8 +10,11 @@ class RailsEventsGenerator < Rails::Generators::Base
 window.#{project_name} =
   Views: {}
   Helpers: {}
-  Ui: {}
-  D3: {}
+  Ui:
+    Close: ->
+      _.each #{project_name}.Ui, (element, i, list) ->
+        # return if element.name is 'Close'
+        element.close() if element.close
   Hierarchy: {}
   init: {}
   setView: ->
@@ -19,6 +22,17 @@ window.#{project_name} =
     view_name = $('body').data('view-render')
     return unless _.isFunction(#{project_name}.Views[view_name])
     #{project_name}.view = new #{project_name}.Views[view_name]
+
+# reinitialize app due to turbolinks
+$(document).on 'page:load', ->
+  #{project_name}.init()
+  #{project_name}.setView()
+
+# initial Document Load
+$(document).ready ->
+  #{project_name}.init()
+  #{project_name}.setView()
+  #{project_name}.pageLoadEffects()
 FILE
   end
 
@@ -42,12 +56,12 @@ class #{project_name}.View
     @delegateEvents()
 
   #regex to split keys
-  delegateEventSplitter = /^(\\S+)\s*(.*)$/
+  delegateEventSplitter = /^(\S+)\s*(.*)$/
 
   delegateEvents: =>
     # copied/modified from Backbone.View.delegateEvents
     # http://backbonejs.org/docs/backbone.html#section-138
-    return this unless events or (events = _.result(this, 'events'))
+    return this unless events or (events = _.result(this, "events"))
     for key of events
       method = events[key]
       method = this[events[key]]  unless _.isFunction(method)
@@ -56,20 +70,21 @@ class #{project_name}.View
       eventName = match[1]
       selector = match[2]
       method = _.bind(method, this)
-      eventName += \".\#{@view_name}\"
-    $('body').on eventName, selector, method
+      eventName += ".\#{@view_name}"
+      $('body').on eventName, selector, method
     this
 
-    close: =>
-        $('body').off \".\#{@view_name}\"
-    $(window).off \".\#{@view_name}\"
-    $(document).off \".\#{@view_name}\"
+  close: =>
+    $('body').off ".\#{@view_name}"
+    $(window).off ".\#{@view_name}"
+    $(document).off ".\#{@view_name}"
     $('body').off '.#{project_name}Events'
     $(window).off '.#{project_name}Events'
     $(document).off '.#{project_name}Events'
 
     #{project_name}.Ui.Close()
     @postClose() if @postClose
+
 FILE
   end
 
