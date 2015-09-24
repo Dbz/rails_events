@@ -30,8 +30,8 @@
           <file leaf-file-name="initializer_generator.rb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/generators/initializer_generator.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="1.6430413">
-                  <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+                <state vertical-scroll-proportion="0.28994846">
+                  <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
@@ -64,8 +64,8 @@
           <file leaf-file-name="version.rb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/rails_events/version.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.05798969">
-                  <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.019329896">
+                  <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
@@ -447,18 +447,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/generators/initializer_generator.rb">
+    <entry file="file://$PROJECT_DIR$/lib/rails_events/version.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6430413">
-          <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.019329896">
+          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/rails_events/version.rb">
+    <entry file="file://$PROJECT_DIR$/lib/generators/initializer_generator.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05798969">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.28994846">
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
           <folding />
         </state>
       </provider>
