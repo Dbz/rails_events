@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc3b0047-7561-413b-a644-04923e720305" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/rails_events-0.0.10.gem" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/rails_events-0.0.4.gem" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/rails_events-0.0.5.gem" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/rails_events-0.0.6.gem" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/rails_events-0.0.7.gem" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/generators/rails_events_generator.rb" afterPath="$PROJECT_DIR$/lib/generators/rails_events_generator.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/rails_events/version.rb" afterPath="$PROJECT_DIR$/lib/rails_events/version.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rails_events.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +30,8 @@
           <file leaf-file-name="rails_events_generator.rb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/generators/rails_events_generator.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.46391752">
-                  <caret line="24" column="69" selection-start-line="24" selection-start-column="69" selection-end-line="24" selection-end-column="69" />
+                <state vertical-scroll-proportion="0.09664948">
+                  <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -104,8 +98,8 @@
         <option value="$PROJECT_DIR$/lib/rails_events.rb" />
         <option value="$PROJECT_DIR$/lib/generators/rails_events/rails_events_generator.rb" />
         <option value="$PROJECT_DIR$/lib/generators/initializer_generator.rb" />
-        <option value="$PROJECT_DIR$/lib/generators/rails_events_generator.rb" />
         <option value="$PROJECT_DIR$/lib/rails_events/version.rb" />
+        <option value="$PROJECT_DIR$/lib/generators/rails_events_generator.rb" />
       </list>
     </option>
   </component>
@@ -471,18 +465,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/generators/rails_events_generator.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46391752">
-          <caret line="24" column="69" selection-start-line="24" selection-start-column="69" selection-end-line="24" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/rails_events/version.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.019329896">
           <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/generators/rails_events_generator.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09664948">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -4,26 +4,22 @@ require 'rails/generators/base'
 class RailsEventsGenerator < Rails::Generators::Base
   desc "This generator creates files at app/assets/javascripts/#{Rails.application.class.parent_name}.js.coffee and app/assets/javascripts/views/_#{Rails.application.class.parent_name}_view.js.coffee"
 
-  def create_initializer_file
-    create_file "config/initializers/initializer.rb", "# Add initialization content here"
-  end
-
   def create_project_file
     project_name = Rails.application.class.parent_name
     create_file "app/assets/javascripts/#{project_name}.js.coffee", <<-FILE
-      window.#{project_name} =
-        Views: {}
-        Helpers: {}
-        Ui: {}
-        D3: {}
-        Hierarchy: {}
-        init: {}
-        setView: ->
-          #{project_name}.view.close() if #{project_name}.view? && #{project_name}.view.close
-          view_name = $('body').data('view-render')
-          return unless _.isFunction(#{project_name}.Views[view_name])
-          #{project_name}.view = new #{project_name}.Views[view_name]
-    FILE
+window.#{project_name} =
+  Views: {}
+  Helpers: {}
+  Ui: {}
+  D3: {}
+  Hierarchy: {}
+  init: {}
+  setView: ->
+    #{project_name}.view.close() if #{project_name}.view? && #{project_name}.view.close
+    view_name = $('body').data('view-render')
+    return unless _.isFunction(#{project_name}.Views[view_name])
+    #{project_name}.view = new #{project_name}.Views[view_name]
+FILE
   end
 
   def create_project_view_file
