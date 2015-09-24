@@ -16,7 +16,6 @@ window.#{project_name} =
         # return if element.name is 'Close'
         element.close() if element.close
   Hierarchy: {}
-  init: {}
   setView: ->
     #{project_name}.view.close() if #{project_name}.view? && #{project_name}.view.close
     view_name = $('body').data('view-render')
@@ -25,14 +24,11 @@ window.#{project_name} =
 
 # reinitialize app due to turbolinks
 $(document).on 'page:load', ->
-  #{project_name}.init()
   #{project_name}.setView()
 
 # initial Document Load
 $(document).ready ->
-  #{project_name}.init()
   #{project_name}.setView()
-  #{project_name}.pageLoadEffects()
 FILE
   end
 
