@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bc3b0047-7561-413b-a644-04923e720305" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/generators/initializer_generator.rb" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/generators/initialize_rails_events.rb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/rails_events.rb" afterPath="$PROJECT_DIR$/lib/rails_events.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/rails_events/version.rb" afterPath="$PROJECT_DIR$/lib/rails_events/version.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="bc3b0047-7561-413b-a644-04923e720305" name="Default" comment="" />
     <ignored path="rails_events.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -31,8 +25,8 @@
       <file leaf-file-name="initializer_generator.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/generators/initializer_generator.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27061856">
-              <caret line="14" column="71" selection-start-line="14" selection-start-column="71" selection-end-line="14" selection-end-column="71" />
+            <state vertical-scroll-proportion="0.38659793">
+              <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -482,8 +476,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/generators/initializer_generator.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27061856">
-          <caret line="14" column="71" selection-start-line="14" selection-start-column="71" selection-end-line="14" selection-end-column="71" />
+        <state vertical-scroll-proportion="0.38659793">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
           <folding />
         </state>
       </provider>
