@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails_events (0.1.6)
+    rails_events (0.1.9)
       rails (>= 4.0.0)
       underscore-rails (>= 0.0.0)
 
@@ -106,7 +106,6 @@ PLATFORMS
 DEPENDENCIES
   rails_events!
   sqlite3
-  underscore-rails
 
 BUNDLED WITH
    1.10.6
