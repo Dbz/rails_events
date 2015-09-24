@@ -13,3 +13,4 @@ gemspec
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
 
+gem 'rails_events', git: 'git://github.com/Dbz/rails_events.git'
