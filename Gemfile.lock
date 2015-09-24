@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    rails_events (0.1.3)
+    rails_events (0.1.6)
       rails (>= 4.0.0)
+      underscore-rails (>= 0.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -97,6 +98,7 @@ GEM
     thread_safe (0.3.5)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    underscore-rails (1.8.3)
 
 PLATFORMS
   ruby
@@ -104,6 +106,7 @@ PLATFORMS
 DEPENDENCIES
   rails_events!
   sqlite3
+  underscore-rails
 
 BUNDLED WITH
    1.10.6

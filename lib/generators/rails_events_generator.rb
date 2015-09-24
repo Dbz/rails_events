@@ -73,4 +73,11 @@ class #{project_name}.View
 FILE
   end
 
+  def add_underscore_to_tree
+    inject_into_file "app/assets/javascripts/application.js", after: "//= require jquery_ujs" do <<-'RUBY'
+      puts "//= require underscore"
+    RUBY
+    end
+  end
+
 end
