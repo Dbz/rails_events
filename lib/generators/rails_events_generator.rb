@@ -45,57 +45,65 @@ FILE
     project_name_camel = Rails.application.class.parent_name.camelize
     project_name_snake = Rails.application.class.parent_name.underscore
     create_file "app/assets/javascripts/views/_#{project_name_snake}_view.js", <<-FILE
-#{project_name_camel}.View = {
+var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  // To bind events you need to create an events object
-  // KEY = event and selector : VALUE = method
-  // events :
-  //   {
-  //     'eventName selector' : 'method',
-  //     'eventName selector' : 'method',
-  //   }
+// To bind events you need to create an events object
+// KEY = event and selector : VALUE = method
+// events :
+//   {
+//     'eventName selector' : 'method',
+//     'eventName selector' : 'method',
+//   }
 
-  constructor: function (options) {
-		options = options || {};
-    view_name = this.__proto__.constructor.name;
-    if(render)
-			render(options);
-		delegateEvents();
-	},
+#{project_name_camel}.View = (function() {
+    var delegateEventSplitter;
 
-	delegateEvents: function(events) {
-		// copied/modified from Backbone.View.delegateEvents
-    // http://backbonejs.org/docs/backbone.html#section-138
-		var delegateEventSplitter = /^(\\S+)\\s*(.*)$/
-    events || (events = _.result(this, 'events'));
-    if (!events)
-			return this;
-    for (var key in events) {
-      var method = events[key];
-      if (!_.isFunction(method))
-				method = this[method];
-      if (!method)
-				continue;
-      var match = key.match(delegateEventSplitter);
-			$('body').on(match[1], match[2], _.bind(method, this));
+    function View(options) {
+        this.close = bind(this.close, this);
+        this.delegateEvents = bind(this.delegateEvents, this);
+        options || (options = {});
+        this.view_name = this.__proto__.constructor.name;
+        if (this.render) {
+            this.render(options);
+        }
+        this.delegateEvents();
     }
-    return this;
-  },
 
-	close: function() {
-		$('body').off(".\#{view_name}");
-    $(window).off(".\#{view_name}");
-    $(document).off(".\#{view_name}");
-    $('body').off('.#{project_name_camel}Events');
-    $(window).off('.#{project_name_camel}Events');
-    $(document).off('.#{project_name_camel}Events');
+    delegateEventSplitter = /^(\S+)\s*(.*)$/;
 
-    #{project_name_camel}.Ui.Close();
-    if(postClose)
-			postClose();
-	}
-}
+    View.prototype.delegateEvents = function(events) {
+        // copied/modified from Backbone.View.delegateEvents
+        // http://backbonejs.org/docs/backbone.html#section-138
+        var delegateEventSplitter = /^(\\S+)\\s*(.*)$/
+        events || (events = _.result(this, 'events'));
+        if (!events)
+          return this;
+        for (var key in events) {
+          var method = events[key];
+          if (!_.isFunction(method))
+            method = this[method];
+          if (!method)
+            continue;
+          var match = key.match(delegateEventSplitter);
+          $('body').on(match[1], match[2], _.bind(method, this));
+        }
+        return this;
+      };
 
+    View.prototype.close = function() {
+        $('body').off('.' + this.view_name):
+        $(window).off('.' + this.view_name):
+        $(document).off('.' + this.view_name):
+        $('body').off('.#{project_name_camel}Events');
+        $(window).off('.#{project_name_camel}Events');
+        $(document).off('.#{project_name_camel}Events');
+        if (this.postClose)
+            return this.postClose();
+    };
+
+    return View;
+
+})();
 FILE
   end
 
