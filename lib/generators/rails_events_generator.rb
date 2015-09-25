@@ -63,9 +63,8 @@ var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); 
         this.delegateEvents = bind(this.delegateEvents, this);
         options || (options = {});
         this.view_name = this.__proto__.constructor.name;
-        if (this.render) {
+        if (this.render)
             this.render(options);
-        }
         this.delegateEvents();
     }
 
@@ -91,9 +90,9 @@ var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); 
       };
 
     View.prototype.close = function() {
-        $('body').off('.' + this.view_name):
-        $(window).off('.' + this.view_name):
-        $(document).off('.' + this.view_name):
+        $('body').off('.' + this.view_name);
+        $(window).off('.' + this.view_name);
+        $(document).off('.' + this.view_name);
         $('body').off('.#{project_name_camel}Events');
         $(window).off('.#{project_name_camel}Events');
         $(document).off('.#{project_name_camel}Events');
