@@ -2,40 +2,42 @@ require 'rails/generators'
 require 'rails/generators/base'
 
 class RailsEventsGenerator < Rails::Generators::Base
-  desc "This generator creates files at app/assets/javascripts/#{Rails.application.class.parent_name}.js.coffee and app/assets/javascripts/views/_#{Rails.application.class.parent_name}_view.js.coffee"
+  desc "This generator creates files at app/assets/javascripts/#{Rails.application.class.parent_name.underscore}.js.coffee and app/assets/javascripts/views/_#{Rails.application.class.parent_name.underscore}_view.js.coffee"
 
   def create_project_file
-    project_name = Rails.application.class.parent_name
-    create_file "app/assets/javascripts/#{project_name}.js.coffee", <<-FILE
-window.#{project_name} =
+    project_name_camel = Rails.application.class.parent_name.camelize
+    project_name_snake = Rails.application.class.parent_name.underscore
+    create_file "app/assets/javascripts/#{project_name_snake}.js.coffee", <<-FILE
+window.#{project_name_camel} =
   Views: {}
   Helpers: {}
   Ui:
     Close: ->
-      _.each #{project_name}.Ui, (element, i, list) ->
+      _.each #{project_name_camel}.Ui, (element, i, list) ->
         # return if element.name is 'Close'
         element.close() if element.close
   Hierarchy: {}
   setView: ->
-    #{project_name}.view.close() if #{project_name}.view? && #{project_name}.view.close
+    #{project_name_camel}.view.close() if #{project_name_camel}.view? && #{project_name_camel}.view.close
     view_name = $('body').data('view-render')
-    return unless _.isFunction(#{project_name}.Views[view_name])
-    #{project_name}.view = new #{project_name}.Views[view_name]
+    return unless _.isFunction(#{project_name_camel}.Views[view_name])
+    #{project_name_camel}.view = new #{project_name_camel}.Views[view_name]
 
 # reinitialize app due to turbolinks
 $(document).on 'page:load', ->
-  #{project_name}.setView()
+  #{project_name_camel}.setView()
 
 # initial Document Load
 $(document).ready ->
-  #{project_name}.setView()
+  #{project_name_camel}.setView()
 FILE
   end
 
   def create_project_view_file
-    project_name = Rails.application.class.parent_name
-    create_file "app/assets/javascripts/views/_#{project_name}_view.js.coffee", <<-FILE
-class #{project_name}.View
+    project_name_camel = Rails.application.class.parent_name.camelize
+    project_name_snake = Rails.application.class.parent_name.underscore
+    create_file "app/assets/javascripts/views/_#{project_name_snake}_view.js.coffee", <<-FILE
+class #{project_name_camel}.View
 
   # To bind events you need to create an events object
   # KEY = event and selector : VALUE = method
@@ -74,30 +76,33 @@ class #{project_name}.View
     $('body').off ".\#{@view_name}"
     $(window).off ".\#{@view_name}"
     $(document).off ".\#{@view_name}"
-    $('body').off '.#{project_name}Events'
-    $(window).off '.#{project_name}Events'
-    $(document).off '.#{project_name}Events'
+    $('body').off '.#{project_name_camel}Events'
+    $(window).off '.#{project_name_camel}Events'
+    $(document).off '.#{project_name_camel}Events'
 
-    #{project_name}.Ui.Close()
+    #{project_name_camel}.Ui.Close()
     @postClose() if @postClose
 
 FILE
   end
 
   def add_underscore_to_tree
-    inject_into_file "app/assets/javascripts/application.js", after: "//= require jquery_ujs\n" do <<-'RUBY'
-//= require underscore
-    RUBY
+    inject_into_file "app/assets/javascripts/application.js", after: "//= require jquery_ujs\n" do
+      "//= require underscore"
     end
   end
 
   def add_app_to_tree
-    @project_name = Rails.application.class.parent_name
-    inject_into_file "app/assets/javascripts/application.js", before: "\n//= require_tree ." do <<-'RUBY'
-//= require @project_name
-//= require_tree ./views
-    RUBY
+    project_name = Rails.application.class.parent_name.underscore
+    inject_into_file "app/assets/javascripts/application.js", before: "\n//= require_tree ." do
+      "//= require #{project_name}"
     end
   end
 
+  def add_views_to_tree
+    project_name = Rails.application.class.parent_name.underscore
+    inject_into_file "app/assets/javascripts/application.js", after: "//= require #{project_name}\n" do
+      "//= require_tree ./views"
+    end
+  end
 end
