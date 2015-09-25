@@ -107,7 +107,7 @@ FILE
   end
 
   def add_javascript_to_view
-    inject_into_file "application.html.erb", after: "<body" do
+    inject_into_file "app/views/layouts/application.html.erb", after: "<body" do
       " data-view-render= <%= \"\#{@js_view.present? ? @js_view : controller_name.camelize+action_name.camelize}\" %>"
     end
   end
