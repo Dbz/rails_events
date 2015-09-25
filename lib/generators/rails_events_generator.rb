@@ -30,10 +30,9 @@ window.#{project_name_camel} = {
 }
 
 // reinitialize app due to turbolinks
-$(document).pageLoad(function() {
+$(document).on('pageload', function() {
 	#{project_name_camel}.setView()
 })
-
 
 // initial Document Load
 $(document).ready(function() {
@@ -45,52 +44,57 @@ FILE
   def create_project_view_file
     project_name_camel = Rails.application.class.parent_name.camelize
     project_name_snake = Rails.application.class.parent_name.underscore
-    create_file "app/assets/javascripts/views/_#{project_name_snake}_view.js.coffee", <<-FILE
-class #{project_name_camel}.View
+    create_file "app/assets/javascripts/views/_#{project_name_snake}_view.js", <<-FILE
+#{project_name_camel}.View = {
 
-  # To bind events you need to create an events object
-  # KEY = event and selector : VALUE = method
-  # events :
-  #   {
-  #     'eventName selector' : 'method',
-  #     'eventName selector' : 'method',
-  #   }
+  // To bind events you need to create an events object
+  // KEY = event and selector : VALUE = method
+  // events :
+  //   {
+  //     'eventName selector' : 'method',
+  //     'eventName selector' : 'method',
+  //   }
 
-  constructor: (options) ->
-    options or (options = {})
-    @view_name = this.__proto__.constructor.name
-    @render(options) if @render
-    @delegateEvents()
+  constructor: function (options) {
+		options = options || {};
+    view_name = this.__proto__.constructor.name;
+    if(render)
+			render(options);
+		delegateEvents();
+	},
 
-  #regex to split keys
-  delegateEventSplitter = /^(\\S+)\\s*(.*)$/
+	delegateEvents: function(events) {
+		// copied/modified from Backbone.View.delegateEvents
+    // http://backbonejs.org/docs/backbone.html#section-138
+		var delegateEventSplitter = /^(\\S+)\\s*(.*)$/
+    events || (events = _.result(this, 'events'));
+    if (!events)
+			return this;
+    for (var key in events) {
+      var method = events[key];
+      if (!_.isFunction(method))
+				method = this[method];
+      if (!method)
+				continue;
+      var match = key.match(delegateEventSplitter);
+			$('body').on(match[1], match[2], _.bind(method, this));
+    }
+    return this;
+  },
 
-  delegateEvents: =>
-    # copied/modified from Backbone.View.delegateEvents
-    # http://backbonejs.org/docs/backbone.html#section-138
-    return this unless events or (events = _.result(this, "events"))
-    for key of events
-      method = events[key]
-      method = this[events[key]]  unless _.isFunction(method)
-      continue  unless method
-      match = key.match(delegateEventSplitter)
-      eventName = match[1]
-      selector = match[2]
-      method = _.bind(method, this)
-      eventName += ".\#{@view_name}"
-      $('body').on eventName, selector, method
-    this
+	close: function() {
+		$('body').off(".\#{view_name}");
+    $(window).off(".\#{view_name}");
+    $(document).off(".\#{view_name}");
+    $('body').off('.#{project_name_camel}Events');
+    $(window).off('.#{project_name_camel}Events');
+    $(document).off('.#{project_name_camel}Events');
 
-  close: =>
-    $('body').off ".\#{@view_name}"
-    $(window).off ".\#{@view_name}"
-    $(document).off ".\#{@view_name}"
-    $('body').off '.#{project_name_camel}Events'
-    $(window).off '.#{project_name_camel}Events'
-    $(document).off '.#{project_name_camel}Events'
-
-    #{project_name_camel}.Ui.Close()
-    @postClose() if @postClose
+    #{project_name_camel}.Ui.Close();
+    if(postClose)
+			postClose();
+	}
+}
 
 FILE
   end
