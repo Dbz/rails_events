@@ -88,21 +88,27 @@ FILE
 
   def add_underscore_to_tree
     inject_into_file "app/assets/javascripts/application.js", after: "//= require jquery_ujs\n" do
-      "//= require underscore"
+      "//= require underscore\n"
     end
   end
 
   def add_app_to_tree
     project_name = Rails.application.class.parent_name.underscore
     inject_into_file "app/assets/javascripts/application.js", before: "\n//= require_tree ." do
-      "//= require #{project_name}"
+      "//= require #{project_name}\n"
     end
   end
 
   def add_views_to_tree
     project_name = Rails.application.class.parent_name.underscore
     inject_into_file "app/assets/javascripts/application.js", after: "//= require #{project_name}\n" do
-      "//= require_tree ./views"
+      "//= require_tree ./views\n"
+    end
+  end
+
+  def add_javascript_to_view
+    inject_into_file "application.html.erb", after: "<body" do
+      " data-view-render= <%= \"\#{@js_view.present? ? @js_view : controller_name.camelize+action_name.camelize}\" %>"
     end
   end
 end
