@@ -52,7 +52,7 @@ class #{project_name}.View
     @delegateEvents()
 
   #regex to split keys
-  delegateEventSplitter = /^(\S+)\s*(.*)$/
+  delegateEventSplitter = /^(\\S+)\\s*(.*)$/
 
   delegateEvents: =>
     # copied/modified from Backbone.View.delegateEvents
@@ -84,11 +84,20 @@ class #{project_name}.View
 FILE
   end
 
-#   def add_underscore_to_tree
-#     inject_into_file "app/assets/javascripts/application.js", after: "//= require jquery_ujs\n" do <<-'RUBY'
-# //= require underscore
-#     RUBY
-#     end
-#   end
+  def add_underscore_to_tree
+    inject_into_file "app/assets/javascripts/application.js", after: "//= require jquery_ujs\n" do <<-'RUBY'
+//= require underscore
+    RUBY
+    end
+  end
+
+  def add_app_to_tree
+    @project_name = Rails.application.class.parent_name
+    inject_into_file "app/assets/javascripts/application.js", before: "\n//= require_tree ." do <<-'RUBY'
+//= require @project_name
+//= require_tree ./views
+    RUBY
+    end
+  end
 
 end
