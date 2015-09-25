@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails_events (0.2.1)
+    rails_events (0.2.5)
       rails (>= 4.0.0)
       underscore-rails (>= 0.0.0)
       underscore-string-rails (>= 0.0.0)
