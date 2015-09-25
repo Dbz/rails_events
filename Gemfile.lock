@@ -1,9 +1,10 @@
 PATH
   remote: .
   specs:
-    rails_events (0.1.11)
+    rails_events (0.2.1)
       rails (>= 4.0.0)
       underscore-rails (>= 0.0.0)
+      underscore-string-rails (>= 0.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -99,6 +100,7 @@ GEM
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     underscore-rails (1.8.3)
+    underscore-string-rails (0.0.2)
 
 PLATFORMS
   ruby

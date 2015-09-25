@@ -95,7 +95,7 @@ FILE
   def add_app_to_tree
     project_name = Rails.application.class.parent_name.underscore
     inject_into_file "app/assets/javascripts/application.js", before: "\n//= require_tree ." do
-      "//= require #{project_name}\n"
+      "\n//= require #{project_name}"
     end
   end
 
