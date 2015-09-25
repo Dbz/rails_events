@@ -10,14 +10,16 @@ Run the following command in terminal `rails generate rails_events`
 
 rails_events gives the ability to bind and trigger events in a backbone.js fashion.
 The javascript files for the front-end use an events hash to keep track of how callbacks are fired.
-The following CoffeeScript demonstrates how to bind events to objects.
+The following CoffeeScript demonstrates how to bind events to selectors.
 
 ```CoffeeScript
 
 events:
-  'event object' : 'callback'
+  'event selector' : 'callback'
 ```
-  
+
+The proper naming convention for the javascript file is the pluralized model name camel cased with the controller action
+e.g. `modelsAction.js`.
 
 ## Example
 
@@ -56,6 +58,7 @@ class ProjectName.Views.CompaniesIndex extends ProjectName.View
 When the text "Hello Company" is clicked, an alert with the text "Hello!" will pop up.
 
 ## Dependencies
+The gems:
 
 + rails
 + underscore-rails

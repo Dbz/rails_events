@@ -2,7 +2,8 @@ require 'rails/generators'
 require 'rails/generators/base'
 
 class RailsEventsGenerator < Rails::Generators::Base
-  desc "This generator creates files at app/assets/javascripts/#{Rails.application.class.parent_name.underscore}.js.coffee and app/assets/javascripts/views/_#{Rails.application.class.parent_name.underscore}_view.js.coffee"
+  desc "This generator creates files at app/assets/javascripts/#{Rails.application.class.parent_name.underscore}.js.coffee and
+app/assets/javascripts/views/_#{Rails.application.class.parent_name.underscore}_view.js.coffee"
 
   def create_project_file
     project_name_camel = Rails.application.class.parent_name.camelize
@@ -10,13 +11,11 @@ class RailsEventsGenerator < Rails::Generators::Base
     create_file "app/assets/javascripts/#{project_name_snake}.js.coffee", <<-FILE
 window.#{project_name_camel} =
   Views: {}
-  Helpers: {}
   Ui:
     Close: ->
       _.each #{project_name_camel}.Ui, (element, i, list) ->
         # return if element.name is 'Close'
         element.close() if element.close
-  Hierarchy: {}
   setView: ->
     #{project_name_camel}.view.close() if #{project_name_camel}.view? && #{project_name_camel}.view.close
     view_name = $('body').data('view-render')
@@ -92,21 +91,21 @@ FILE
     end
   end
 
-  def add_app_to_tree
+  def add_project_to_tree
     project_name = Rails.application.class.parent_name.underscore
     inject_into_file "app/assets/javascripts/application.js", before: "\n//= require_tree ." do
       "\n//= require #{project_name}"
     end
   end
 
-  def add_views_to_tree
+  def add_views_folder_to_tree
     project_name = Rails.application.class.parent_name.underscore
     inject_into_file "app/assets/javascripts/application.js", after: "//= require #{project_name}\n" do
       "//= require_tree ./views\n"
     end
   end
 
-  def add_javascript_to_view
+  def link_javascript_files_to_views
     inject_into_file "app/views/layouts/application.html.erb", after: "<body" do
       " data-view-render= <%= \"\#{@js_view.present? ? @js_view : controller_name.camelize+action_name.camelize}\" %>"
     end
