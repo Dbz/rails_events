@@ -8,27 +8,37 @@ app/assets/javascripts/views/_#{Rails.application.class.parent_name.underscore}_
   def create_project_file
     project_name_camel = Rails.application.class.parent_name.camelize
     project_name_snake = Rails.application.class.parent_name.underscore
-    create_file "app/assets/javascripts/#{project_name_snake}.js.coffee", <<-FILE
-window.#{project_name_camel} =
-  Views: {}
-  Ui:
-    Close: ->
-      _.each #{project_name_camel}.Ui, (element, i, list) ->
-        # return if element.name is 'Close'
-        element.close() if element.close
-  setView: ->
-    #{project_name_camel}.view.close() if #{project_name_camel}.view? && #{project_name_camel}.view.close
-    view_name = $('body').data('view-render')
-    return unless _.isFunction(#{project_name_camel}.Views[view_name])
-    #{project_name_camel}.view = new #{project_name_camel}.Views[view_name]
+    create_file "app/assets/javascripts/#{project_name_snake}.js", <<-FILE
+window.#{project_name_camel} = {
+	Views: {},
+	Ui: {
+		Close: function() {
+			_.each(#{project_name_camel}.Ui, function(element) {
+        if(element.close)
+					element.close();
+			})
+		}
+	},
+	setView: function() {
+		if(!!#{project_name_camel}.view && #{project_name_camel}.view.close)
+			#{project_name_camel}.view.close();
+    view_name = $('body').data('view-render');
+    if(!_.isFunction(#{project_name_camel}.Views[view_name]))
+			return;
+    #{project_name_camel}.view = new #{project_name_camel}.Views[view_name]();
+	}
+}
 
-# reinitialize app due to turbolinks
-$(document).on 'page:load', ->
-  #{project_name_camel}.setView()
+// reinitialize app due to turbolinks
+$(document).pageLoad(function() {
+	#{project_name_camel}.setView()
+})
 
-# initial Document Load
-$(document).ready ->
-  #{project_name_camel}.setView()
+
+// initial Document Load
+$(document).ready(function() {
+	#{project_name_camel}.setView()
+})
 FILE
   end
 

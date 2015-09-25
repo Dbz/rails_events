@@ -18,7 +18,7 @@ events:
   'event selector' : 'callback'
 ```
 
-The proper naming convention for the javascript file is the pluralized model name camel cased with the controller action
+The proper naming convention for the javascript file is the controller name camel cased with the controller action
 e.g. `modelsAction.js`.
 
 ## Example
