@@ -45,8 +45,6 @@ FILE
     project_name_camel = Rails.application.class.parent_name.camelize
     project_name_snake = Rails.application.class.parent_name.underscore
     create_file "app/assets/javascripts/views/_#{project_name_snake}_view.js", <<-FILE
-var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
-
 // To bind events you need to create an events object
 // KEY = event and selector : VALUE = method
 // events :
@@ -59,8 +57,7 @@ var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); 
     var delegateEventSplitter;
 
     function View(options) {
-        this.close = bind(this.close, this);
-        this.delegateEvents = bind(this.delegateEvents, this);
+        this.close = _.bind(this.close, this);
         options || (options = {});
         this.view_name = this.__proto__.constructor.name;
         if (this.render)
@@ -71,7 +68,7 @@ var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); 
     delegateEventSplitter = /^(\S+)\s*(.*)$/;
 
     View.prototype.delegateEvents = function(events) {
-        // copied/modified from Backbone.View.delegateEvents
+        // Copied/modified from Backbone.View.delegateEvents
         // http://backbonejs.org/docs/backbone.html#section-138
         var delegateEventSplitter = /^(\\S+)\\s*(.*)$/
         events || (events = _.result(this, 'events'));
