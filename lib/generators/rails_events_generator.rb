@@ -22,10 +22,10 @@ window.#{project_name_camel} = {
 	setView: function() {
 		if(!!#{project_name_camel}.view && #{project_name_camel}.view.close)
 			#{project_name_camel}.view.close();
-    view_name = $('body').data('view-render');
-    if(!_.isFunction(#{project_name_camel}.Views[view_name]))
+    viewName = $('body').data('view-render');
+    if(!_.isFunction(#{project_name_camel}.Views[viewName]))
 			return;
-    #{project_name_camel}.view = new #{project_name_camel}.Views[view_name]();
+    #{project_name_camel}.view = new #{project_name_camel}.Views[viewName]();
 	}
 }
 
@@ -59,7 +59,7 @@ FILE
     function View(options) {
         this.close = _.bind(this.close, this);
         options || (options = {});
-        this.view_name = this.__proto__.constructor.name;
+        this.viewName = this.__proto__.constructor.name;
         if (this.render)
             this.render(options);
         this.delegateEvents();
@@ -87,9 +87,9 @@ FILE
       };
 
     View.prototype.close = function() {
-        $('body').off('.' + this.view_name);
-        $(window).off('.' + this.view_name);
-        $(document).off('.' + this.view_name);
+        $('body').off('.' + this.viewName);
+        $(window).off('.' + this.viewName);
+        $(document).off('.' + this.viewName);
         $('body').off('.#{project_name_camel}Events');
         $(window).off('.#{project_name_camel}Events');
         $(document).off('.#{project_name_camel}Events');

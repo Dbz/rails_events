@@ -116,6 +116,7 @@ Lastly it modifies the `<body>` tag in `application.html.erb` to be:
 `<body data-view-render= <%= "#{@js_view.present? ? @js_view : controller_name.camelize+action_name.camelize}" %>>`
 
 ## Dependencies
+
 The gems:
 
 + rails
@@ -125,6 +126,4 @@ The gems:
 
 # Contributors
 
-[Michael](https://github.com/madkap)
-
-[Ram](https://github.com/ramkumarceg)
+A special thank you to [Michael](https://github.com/madkap) and [Ram](https://github.com/ramkumarceg)
