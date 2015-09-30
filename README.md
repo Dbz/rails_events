@@ -1,8 +1,9 @@
 # rails_events
 
 Add Backbone style events without using the whole framework.
-This will provide a bare bones front-end framework for developing Rails applications with Javascript or CoffeeScript.
-This will increase the speed of all event based development and creation of dynamic content.
+This will provide a bare bones micro front-end framework for developing multi-page Rails applications with Javascript or CoffeeScript.
+This will increase the speed of all event based development, creation of dynamic content, and will add
+clear organization to Javascript/Coffeescript files.
 
 ## Set up
 
@@ -95,6 +96,25 @@ ProjectName.Views.CompaniesIndex = ProjectName.View.extend({
 
 When the text "Hello Company" is clicked, an alert with the text "Hello!" will pop up.
 
+## Troubleshooting
+
+There was likely an error in the following:
+
+This gem creates the following files:
+
++ `app/assets/javascripts/views/_project_name_view.js`
++ `app/assets/javascripts/project_name.js`
+
+And injects the following dependencies in the `application.js` file in the following order:
+
++ Underscore
++ ProjectName
++ ./views
+
+Lastly it modifies the `<body>` tag in `application.html.erb` to be:
+
+`<body data-view-render= <%= "#{@js_view.present? ? @js_view : controller_name.camelize+action_name.camelize}" %>>`
+
 ## Dependencies
 The gems:
 
@@ -102,3 +122,9 @@ The gems:
 + underscore-rails
 + underscore-string-rails
 + jquery-rails
+
+# Contributors
+
+[Michael](https://github.com/madkap)
+
+[Ram](https://github.com/ramkumarceg)
