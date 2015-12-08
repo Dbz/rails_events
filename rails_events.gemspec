@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["burtdaniel@gmail.com"]
   s.homepage    = "http://www.Dbz.rocks"
   s.summary     = "Add Backbone style events without using the whole framework. This will provide a bare bones micro front-end framework for developing multi-page Rails applications with Javascript or CoffeeScript. This will increase the speed of all event based development, creation of dynamic content, and will add clear organization to Javascript/Coffeescript files. See https://github.com/Dbz/rails_events for more information"
-  s.description = "Add Backbone style events without using the whole framework. This will provide a bare bones micro front-end framework for developing multi-page Rails applications with Javascript or CoffeeScript. This will increase the speed of all event based development, creation of dynamic content, and will add clear organization to Javascript/Coffeescript files. See <a href='https://github.com/Dbz/rails_events'>https://github.com/Dbz/rails_events</a> for more information"
+  s.description = "Add Backbone style events without using the whole framework. This will provide a bare bones micro front-end framework for developing multi-page Rails applications with Javascript or CoffeeScript. This will increase the speed of all event based development, creation of dynamic content, and will add clear organization to Javascript/Coffeescript files. See https://github.com/Dbz/rails_events for more information"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
